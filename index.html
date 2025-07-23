@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Smart Salmon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+Thai:wght@100..900&display=swap"
+        rel="stylesheet">
+    <script>
+        function toggleAnswer(clickedEl) {
+            const allQuestions = document.querySelectorAll('.question');
+            const allAnswers = document.querySelectorAll('.answer');
+
+            allQuestions.forEach((q, i) => {
+                const answer = allAnswers[i];
+                const icon = q.querySelector('.toggle-icon');
+
+                if (q === clickedEl) {
+                    const isActive = q.classList.contains('active');
+                    q.classList.toggle('active', !isActive);
+                    answer.style.display = isActive ? 'none' : 'block';
+                    icon.textContent = isActive ? '+' : '–';
+                } else {
+                    q.classList.remove('active');
+                    answer.style.display = 'none';
+                    icon.textContent = '+';
+                }
+            });
+        }
+    </script>
+    <style>
+        .img-arrow {
+            width: 80%;
+        }
+
+        .circle-org {
+            background: #D65C3F;
+            border-radius: 50%;
+            height: 80px;
+            width: 80px;
+            position: absolute;
+            right: 0;
+        }
+
+        .btn-submit {
+            width: fit-content;
+            font-size: 32px;
+            color: #fff;
+            background: #3E7087;
+            border: none;
+            padding: 5px 20px;
+            margin-top: 20px;
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        input::placeholder {
+            color: #fff;
+
+            opacity: 0.5;
+        }
+
+        textarea:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        textarea::placeholder {
+            color: #fff;
+
+            opacity: 0.5;
+        }
+
+        .input {
+            border: none;
+            background: none;
+            font-size: 24px;
+            color: #fff;
+            width: 100%;
+            border-bottom: 1px solid #fff;
+            font-family: "Kanit", sans-serif;
+            margin-top: 10px;
+        }
+
+        .question {
+            font-size: 50px;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        .question.active {
+            color: #D65C3F;
+            /* สีตอน active */
+        }
+
+        body {
+            width: 100% !important;
+            max-width: 100% !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            font-family: "Kanit", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        button {
+            font-family: "Kanit", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-column {
+            flex-direction: column;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .aling-center {
+            align-items: center;
+        }
+
+        .btn-black {
+            background-color: #121525;
+            color: #fff;
+            padding: 5px 40px;
+            font-size: 32px;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        .btn-detail {
+            margin-top: 6px;
+            padding: 0px 20px;
+            font-size: 38px;
+            color: #fff;
+            background-color: #121525;
+            border-radius: 40px;
+            padding-right: 45px;
+            cursor: pointer;
+            margin-right: 40px;
+        }
+
+        .title-service {
+            font-size: 80px;
+            font-weight: 700;
+            line-height: 0.8;
+            padding: 50px 0px;
+        }
+
+        .subtitle-service {
+            font-size: 40px;
+            line-height: 1;
+        }
+
+        .answer {
+            font-size: 38px;
+            padding-left: 22px;
+            color: #D65C3F;
+            display: none;
+
+        }
+
+        .title-hero {
+            font-weight: 600;
+            background: #D65C3F;
+            color: #fff;
+            width: fit-content;
+            font-size: 62px;
+            padding: 0px 10px;
+        }
+
+        .subtitle-hero {
+            background: #D65C3F;
+            color: #fff;
+            width: fit-content;
+            font-size: 42px;
+            padding: 0px 10px;
+        }
+
+        .subtitle-hero-2 {
+            font-size: 42px;
+            margin-top: 10px;
+            line-height: 1.2;
+        }
+
+        .box-contact-hero {
+            align-self: center;
+            margin-top: 50px;
+            position: absolute;
+            bottom: 140px;
+            z-index: 99;
+        }
+
+        .title-footer-hero {
+            position: absolute;
+            font-size: 48px;
+            bottom: 80px;
+            font-weight: 500;
+        }
+
+        .subtitle-footer-hero {
+            background: #D65C3F;
+            color: #fff;
+            border-radius: 50px;
+            padding: 0px 20px;
+            margin-left: 5px;
+        }
+
+        .box-footer-hero {
+            margin-top: -200px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-who {
+            font-weight: 800;
+            background: #D65C3F;
+            color: #fff;
+            width: 60%;
+            font-size: 90px;
+            padding: 0px 30px;
+        }
+
+        .subtitle-who {
+            font-size: 45px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .title-wedo {
+            position: absolute;
+            margin-left: 160px;
+            font-size: 70px;
+            color: #fff;
+            font-weight: 400;
+        }
+
+        .title-client {
+            position: absolute;
+            margin-right: 50px;
+            font-size: 60px;
+        }
+
+        .subtitle-wedo {
+            font-size: 32px;
+            line-height: 1.4;
+            color: #fff;
+            font-weight: 400;
+            margin: 0;
+            padding-top: 20px;
+        }
+
+        .title-platform {
+            position: absolute;
+            margin-right: 65px;
+            font-size: 60px;
+            color: #fff;
+        }
+
+        .box-detail-service {
+            margin-top: -100px;
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        @media only screen and (max-width: 1535px) {
+            body {
+                /* background-color: lightblue; */
+            }
+
+            .title-hero {
+                font-size: 48px;
+            }
+
+            .subtitle-hero,
+            .subtitle-hero-2 {
+                font-size: 36px;
+            }
+
+            .title-footer-hero {
+                bottom: 50px;
+                right: 300px;
+            }
+
+            .subtitle-who {
+                font-size: 36px;
+            }
+
+            .title-wedo {
+                margin-left: 110px;
+                font-size: 50px;
+            }
+
+            .title-client {
+                font-size: 50px;
+                margin-right: 70px;
+            }
+
+            .subtitle-wedo {
+                font-size: 28px;
+            }
+
+            .title-platform {
+                font-size: 50px;
+                margin-right: 90px;
+            }
+
+            .btn-detail {
+                font-size: 28px;
+            }
+
+            .circle-org {
+                width: 60px;
+                height: 60px;
+
+            }
+
+            .box-detail-service {
+                margin-top: 0px;
+            }
+
+            .title-service {
+                font-size: 60px;
+            }
+
+            .subtitle-service {
+                font-size: 28px;
+            }
+
+            .question {}
+        }
+
+        @media only screen and (max-width: 1279px) {
+            body {
+                /* background-color: lightblue; */
+            }
+
+            .title-hero {
+                font-size: 40px;
+            }
+
+            .subtitle-hero,
+            .subtitle-hero-2 {
+                font-size: 28px;
+            }
+
+            .title-footer-hero {
+                bottom: 30px;
+                right: 120px;
+            }
+
+            .subtitle-who {
+                font-size: 24px;
+            }
+
+            .title-wedo {
+                margin-left: 110px;
+                font-size: 50px;
+            }
+
+            .title-client {
+                font-size: 50px;
+                margin-right: 70px;
+            }
+
+            .subtitle-wedo {
+                font-size: 24px;
+            }
+
+            .title-platform {
+                font-size: 50px;
+                margin-right: 90px;
+            }
+
+            .btn-detail {
+                font-size: 24px;
+                padding-right: 20px;
+                margin-right: 30px;
+            }
+
+            .circle-org {
+                width: 50px;
+                height: 50px;
+                /* margin-left: -10px; */
+
+            }
+
+            .box-detail-service {
+                margin-top: 0px;
+            }
+
+            .title-service {
+                font-size: 40px;
+            }
+
+            .subtitle-service {
+                font-size: 24px;
+            }
+
+            .question {
+                font-size: 32px;
+            }
+
+            .answer {
+                font-size: 24px;
+            }
+        }
+
+        @media only screen and (max-width: 1023px) {
+            body {
+                /* background-color: lightblue; */
+            }
+
+            .img-arrow {
+                width: 60%;
+            }
+
+            .title-hero {
+                font-size: 40px;
+                margin-top: -20px;
+            }
+
+            .btn-black {
+                font-size: 24px;
+            }
+
+            .subtitle-hero,
+            .subtitle-hero-2 {
+                font-size: 24px;
+            }
+
+            .title-footer-hero {
+                bottom: 20px;
+                right: 120px;
+                font-size: 40px;
+            }
+
+            .title-who {
+                font-size: 32px;
+                width: 50%;
+            }
+
+            .subtitle-who {
+                font-size: 24px;
+            }
+
+            .title-wedo {
+                margin-left: 60px;
+                font-size: 40px;
+            }
+
+            .title-client {
+                font-size: 50px;
+                margin-right: 70px;
+            }
+
+            .subtitle-wedo {
+                font-size: 20px;
+            }
+
+            .title-platform {
+                font-size: 50px;
+                margin-right: 90px;
+            }
+
+            .btn-detail {
+                font-size: 18px;
+                padding-right: 20px;
+                margin-right: 30px;
+            }
+
+            .circle-org {
+                width: 45px;
+                height: 45px;
+                /* margin-left: -10px; */
+
+            }
+
+            .box-detail-service {
+                margin-top: 0px;
+            }
+
+            .title-service {
+                font-size: 32px;
+            }
+
+            .subtitle-service {
+                font-size: 20px;
+            }
+
+            .question {
+                font-size: 32px;
+            }
+
+            .answer {
+                font-size: 24px;
+            }
+
+            .box-btn-client {
+                position: absolute;
+                bottom: 20px;
+                right: 40px;
+                padding: 30px;
+                z-index: 99;
+            }
+        }
+
+        @media only screen and (max-width: 767px) {
+            body {
+                background-color: lightblue;
+            }
+
+            .title-hero {
+                font-size: 40px;
+                margin-top: -20px;
+            }
+
+            .btn-black {
+                font-size: 24px;
+            }
+
+            .subtitle-hero,
+            .subtitle-hero-2 {
+                font-size: 24px;
+            }
+
+            .title-footer-hero {
+                bottom: 20px;
+                right: 120px;
+                font-size: 40px;
+            }
+
+            .title-who {
+                font-size: 32px;
+                width: 50%;
+            }
+
+            .subtitle-who {
+                font-size: 24px;
+            }
+
+            .title-wedo {
+                margin-left: 60px;
+                font-size: 40px;
+            }
+
+            .title-client {
+                font-size: 50px;
+                margin-right: 70px;
+            }
+
+            .subtitle-wedo {
+                font-size: 20px;
+            }
+
+            .title-platform {
+                font-size: 50px;
+                margin-right: 90px;
+            }
+
+            .btn-detail {
+                font-size: 18px;
+                padding-right: 20px;
+                margin-right: 30px;
+            }
+
+            .circle-org {
+                width: 45px;
+                height: 45px;
+                /* margin-left: -10px; */
+
+            }
+
+            .box-detail-service {
+                margin-top: 0px;
+            }
+
+            .title-service {
+                font-size: 32px;
+            }
+
+            .subtitle-service {
+                font-size: 20px;
+            }
+
+            .question {
+                font-size: 32px;
+            }
+
+            .answer {
+                font-size: 24px;
+            }
+
+            .box-btn-client {
+                position: absolute;
+                bottom: 20px;
+                right: 40px;
+                padding: 30px;
+                z-index: 99;
+            }
+
+            .img-arrow {
+                width: 50% !important;
+            }
+        }
+         @media only screen and (max-width: 479px) {
+            body {
+                background-color: lightblue;
+            }
+
+            .title-hero {
+                font-size: 40px;
+                margin-top: -20px;
+            }
+
+            .btn-black {
+                font-size: 24px;
+            }
+
+            .subtitle-hero,
+            .subtitle-hero-2 {
+                font-size: 24px;
+            }
+
+            .title-footer-hero {
+                bottom: 20px;
+                right: 120px;
+                font-size: 40px;
+            }
+
+            .title-who {
+                font-size: 32px;
+                width: 50%;
+            }
+
+            .subtitle-who {
+                font-size: 24px;
+            }
+
+            .title-wedo {
+                margin-left: 60px;
+                font-size: 40px;
+            }
+
+            .title-client {
+                font-size: 50px;
+                margin-right: 70px;
+            }
+
+            .subtitle-wedo {
+                font-size: 20px;
+            }
+
+            .title-platform {
+                font-size: 50px;
+                margin-right: 90px;
+            }
+
+            .btn-detail {
+                font-size: 18px;
+                padding-right: 20px;
+                margin-right: 30px;
+            }
+
+            .circle-org {
+                width: 45px;
+                height: 45px;
+                /* margin-left: -10px; */
+
+            }
+
+            .box-detail-service {
+                margin-top: 0px;
+            }
+
+            .title-service {
+                font-size: 32px;
+            }
+
+            .subtitle-service {
+                font-size: 20px;
+            }
+
+            .question {
+                font-size: 32px;
+            }
+
+            .answer {
+                font-size: 24px;
+            }
+
+            .box-btn-client {
+                position: absolute;
+                bottom: 20px;
+                right: 40px;
+                padding: 30px;
+                z-index: 99;
+            }
+
+            .img-arrow {
+                width: 50% !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div style="position: relative;">
+            <img src="./img/header.png" alt="" style="width: 100%;">
+            <div style="position: absolute; top: 20px;  width: 95%; display: flex; right: 0;">
+                <img src="./img/logo-salmon.png" alt="" style="width: 15%;">
+            </div>
+        </div>
+
+        <div style="display: flex; width: 90%; margin: auto; margin-top: 30px;">
+            <div style="width: 50%; margin-top: -100px; position: relative;" class="flex flex-column justify-center">
+                <div class="title-hero" style="">
+                    ผู้เชี่ยวชาญด้านการตลาด
+                </div>
+                <div class="subtitle-hero" style="">
+                    ดูแลทุกธุรกิจและวางแผนอย่างตรงเป้าหมาย
+                </div>
+                <div class="subtitle-hero-2" style="">
+                    “ Make your vision come true ” <br>
+                    Best Budget Best Quality
+                </div>
+                <div class="box-contact-hero" style="">
+                    <button class="btn-black" onclick="window.location.href='/#contact'">ติดต่อเรา</button>
+                </div>
+            </div>
+            <div style="width: 50%; display: flex;">
+                <div style="display: flex; justify-content: end;">
+                    <img src="./img/hero-icon.png" alt="" style="width: 90%;">
+                </div>
+                <!-- <div>
+                    TH EN
+                </div> -->
+            </div>
+        </div>
+        <div class="box-footer-hero" style="">
+            <img src="./img/hero-salmon-footer.png" alt="" style="width: 100%;">
+            <h2 class="title-footer-hero" style="">วางแผนการตลาดแบบ<span class="subtitle-footer-hero"
+                    style="">มืออาชีพ</span>
+            </h2>
+        </div>
+    </section>
+    <section>
+        <img src="./img/bg-aboutus.png" alt="" style="width: 100%;">
+    </section>
+    <section>
+        <div style="position: relative; margin-top: -10px;">
+            <img src="./img/bg-about.png" alt="" style="width: 100%;">
+            <div style="position: absolute; bottom: 0; width: 100%;">
+
+                <div style=" display: flex; justify-content: end;">
+                    <img src="./img/bg-graphic-about.png" alt="" style="width: 75%;">
+                </div>
+            </div>
+            <div
+                style="position: absolute; z-index: 2; top: 0; display: flex; justify-content: center; width: 100%; margin: auto; padding-top: 80px;">
+                <div style="width: 90%;">
+                    <div class="title-who" style="">
+                        WHO WE ARE?
+                    </div>
+                    <div>
+                        <p class="subtitle-who" style="">
+                            ทีมการตลาดทีมรวมกลยุทธ์ ความคิดสร้างสรรค์ <br>
+                            และการสื่อสารไว้ครบในที่เดียว <br>
+                            เราวางแผนอย่างเป็นระบบและลงมือทําจริง <br>
+                            เพื่อผลลัพธ์ที่ตอบโจทย์ธุรกิจของคุณ <br>
+                            พร้อมอยู่เคียงข้างในทุกก้าว <br>
+                            เหมือนเพื่อนคู่คิดที่เข้าใจ <br>
+                        </p>
+                    </div>
+                    <div>
+                        <button class="btn-black" style="padding: 5px 40px;"
+                            onclick="window.location.href='/#contact'">ปรึกษาผู้เชี่ยวชาญ</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        </div>
+    </section>
+    <section>
+        <div style=" margin-top: -8px;">
+            <div style="position: relative;">
+                <img src="./img/customer-head.png" alt="" style="width: 100%;">
+                <div
+                    style="position: absolute; bottom: 0; right: 0; display: flex; justify-content: end; margin-bottom: 5px;">
+                    <img src="./img/bg-title-wh.png" alt="" style="width: 80%;">
+                    <div class="title-client" style="">OurClients</div>
+                </div>
+            </div>
+
+            <div style="background-color: #F5FAFD; margin-top: -5px; position: relative;">
+                <img src="./img/customer.png" alt="" style="width: 100%;">
+                <div class="box-btn-client" style="">
+                    <button class="btn-black" style="padding: 5px 60px; cursor: pointer;"
+                        onclick="window.location.href='/clients.html'">ชมผลงาน</button>
+                </div>
+            </div>
+        </div>
+        <div style="background-image: linear-gradient(to right, #1E293B, #3C6980); height: 20px;">
+
+        </div>
+
+    </section>
+    <section style="position: relative; ">
+        <div style="position: absolute; width: 100%; margin-top: -110px;">
+            <div style=" display: flex; ">
+                <img src="./img/bg-title-or.png" alt="" style="width: 33%; margin-left: -10px;">
+                <div class="title-wedo" style="">We
+                    Do</div>
+            </div>
+            <div style="background-color: #D65C3F; display: flex; ">
+                <div
+                    style="padding-top: 50px; padding-bottom: 50px; width: 90%; margin: auto; display: flex; justify-content: space-between;">
+                    <div>
+                        <div style="height: 3px; background: #fff; width: 50%;">
+
+                        </div>
+                        <p class="subtitle-wedo" style="">
+                            เราคือผู้ให้บริการด้านการตลาดครบวงจร ตัองแต่การวางกลยุทธ์อย่างตรงจุด <br>
+                            ไปจนถึงการออกแบบสื่อและผลิตคอนเทนต์ที่แตกต่างอย่างสร้างสรรค์ <br>
+                            เพื่อสะท้อนอัตลักษณ์ของธุรกิจคุณอย่างชัดเจน <br>
+                            และมีเอกลักษณ์เฉพาะแบรนด์ <br>
+                        </p>
+                    </div>
+
+                    <div style="margin-top: -20px;">
+                        <div style="font-size: 68px; font-weight: 800; color: #fff; text-align: right;">OUR</div>
+                        <div
+                            style="font-size: 68px; font-weight: 800; color: #fff; margin-top: -40px; margin-right: 50px;">
+                            SERVICES.</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+    <!-- <section style="margin-top: 300px; position: relative;">
+        <div style="position: absolute; bottom: 0; right: 0; display: flex; justify-content: end; margin-bottom: 20px;">
+            <img src="./img/bg-title-blue.png" alt="" style="width: 80%;">
+            <div style="position: absolute; margin-right: 65px; font-size: 60px; color: #fff;">Platform</div>
+        </div>
+
+        <div style="width: 100%; background-image: linear-gradient(to right,#1E293B,#35728F,#35728F);">
+            <div>
+
+                <div>
+
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <section style="margin-top: 280px;">
+        <div style=" margin-top: -8px;">
+            <div style="position: relative;">
+                <!-- <img src="./img/customer-head.png" alt="" style="width: 100%;"> -->
+                <div style="position: absolute; bottom: 0; right: 0; display: flex; justify-content: end; ">
+                    <img src="./img/bg-title-blue.png" alt="" style="width: 80%;">
+                    <div class="title-platform" style="">Platform</div>
+                </div>
+            </div>
+
+            <div
+                style=" display: flex; background-image: linear-gradient(to right, #1E293B, #35728F,#35728F); margin-top: -15px; position: relative; padding: 20px 0px;">
+                <div
+                    style="width: 90%; margin: auto; justify-content: space-between; display: flex; align-items: center;">
+                    <div>
+                        <svg style="height: 100px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            stroke="#ffffff">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path
+                                    d="M19.76 10.77L19.67 10.42H12.23V13.58H16.68C16.4317 14.5443 15.8672 15.3974 15.0767 16.0029C14.2863 16.6084 13.3156 16.9313 12.32 16.92C11.0208 16.9093 9.77254 16.4135 8.81999 15.53C8.35174 15.0685 7.97912 14.5191 7.72344 13.9134C7.46777 13.3077 7.33407 12.6575 7.33 12C7.34511 10.6795 7.86792 9.41544 8.79 8.47002C9.7291 7.58038 10.9764 7.08932 12.27 7.10002C13.3779 7.10855 14.4446 7.52101 15.27 8.26002L17.47 6.00002C16.02 4.70638 14.1432 3.9941 12.2 4.00002C11.131 3.99367 10.0713 4.19793 9.08127 4.60115C8.09125 5.00436 7.19034 5.59863 6.43 6.35002C4.98369 7.8523 4.16827 9.85182 4.15152 11.9371C4.13478 14.0224 4.918 16.0347 6.34 17.56C7.12784 18.3449 8.06422 18.965 9.09441 19.3839C10.1246 19.8029 11.2279 20.0123 12.34 20C13.3484 20.0075 14.3479 19.8102 15.2779 19.42C16.2078 19.0298 17.0488 18.4549 17.75 17.73C19.1259 16.2171 19.8702 14.2347 19.83 12.19C19.8408 11.7156 19.8174 11.2411 19.76 10.77Z"
+                                    fill="#ffffff"></path>
+                            </g>
+                        </svg>
+                    </div>
+                    <div>
+                        <svg style="height: 80px;" viewBox="-5 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <title>facebook [#ffffff]</title>
+                                <desc>Created with Sketch.</desc>
+                                <defs> </defs>
+                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g id="Dribbble-Light-Preview" transform="translate(-385.000000, -7399.000000)"
+                                        fill="#ffffff">
+                                        <g id="icons" transform="translate(56.000000, 160.000000)">
+                                            <path
+                                                d="M335.821282,7259 L335.821282,7250 L338.553693,7250 L339,7246 L335.821282,7246 L335.821282,7244.052 C335.821282,7243.022 335.847593,7242 337.286884,7242 L338.744689,7242 L338.744689,7239.14 C338.744689,7239.097 337.492497,7239 336.225687,7239 C333.580004,7239 331.923407,7240.657 331.923407,7243.7 L331.923407,7246 L329,7246 L329,7250 L331.923407,7250 L331.923407,7259 L335.821282,7259 Z"
+                                                id="facebook-[#ffffff]"> </path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div>
+                        <svg style="height: 100px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M2 6C2 3.79086 3.79086 2 6 2H18C20.2091 2 22 3.79086 22 6V18C22 20.2091 20.2091 22 18 22H6C3.79086 22 2 20.2091 2 18V6ZM6 4C4.89543 4 4 4.89543 4 6V18C4 19.1046 4.89543 20 6 20H18C19.1046 20 20 19.1046 20 18V6C20 4.89543 19.1046 4 18 4H6ZM12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9ZM7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12ZM17.5 8C18.3284 8 19 7.32843 19 6.5C19 5.67157 18.3284 5 17.5 5C16.6716 5 16 5.67157 16 6.5C16 7.32843 16.6716 8 17.5 8Z"
+                                    fill="#ffffff"></path>
+                            </g>
+                        </svg>
+                    </div>
+                    <div>
+                        <svg style="height: 100px;" fill="#ffffff" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path
+                                    d="M19.148 2.971A2.008 2.008 0 0 0 17.434 2H6.566c-.698 0-1.355.372-1.714.971L2.143 7.485A.995.995 0 0 0 2 8a3.97 3.97 0 0 0 1 2.618V19c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-8.382A3.97 3.97 0 0 0 22 8a.995.995 0 0 0-.143-.515l-2.709-4.514zm.836 5.28A2.003 2.003 0 0 1 18 10c-1.103 0-2-.897-2-2 0-.068-.025-.128-.039-.192l.02-.004L15.22 4h2.214l2.55 4.251zM10.819 4h2.361l.813 4.065C13.958 9.137 13.08 10 12 10s-1.958-.863-1.993-1.935L10.819 4zM6.566 4H8.78l-.76 3.804.02.004C8.025 7.872 8 7.932 8 8c0 1.103-.897 2-2 2a2.003 2.003 0 0 1-1.984-1.749L6.566 4zM10 19v-3h4v3h-4zm6 0v-3c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v3H5v-7.142c.321.083.652.142 1 .142a3.99 3.99 0 0 0 3-1.357c.733.832 1.807 1.357 3 1.357s2.267-.525 3-1.357A3.99 3.99 0 0 0 18 12c.348 0 .679-.059 1-.142V19h-3z">
+                                </path>
+                            </g>
+                        </svg>
+                        <!-- <svg style="height: 100px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M4.87617 3.75H19.1238L21 8.86683V10.5C21 11.2516 20.7177 11.9465 20.25 12.4667V21H3.75V12.4667C3.28234 11.9465 3 11.2516 3 10.5V8.86683L4.87617 3.75ZM18.1875 13.3929C18.3807 13.3929 18.5688 13.3731 18.75 13.3355V19.5H15V15H9L9 19.5H5.25V13.3355C5.43122 13.3731 5.61926 13.3929 5.8125 13.3929C6.63629 13.3929 7.36559 13.0334 7.875 12.4667C8.38441 13.0334 9.11371 13.3929 9.9375 13.3929C10.7613 13.3929 11.4906 13.0334 12 12.4667C12.5094 13.0334 13.2387 13.3929 14.0625 13.3929C14.8863 13.3929 15.6156 13.0334 16.125 12.4667C16.6344 13.0334 17.3637 13.3929 18.1875 13.3929ZM10.5 19.5H13.5V16.5H10.5L10.5 19.5ZM19.5 9.75V10.5C19.5 11.2965 18.8856 11.8929 18.1875 11.8929C17.4894 11.8929 16.875 11.2965 16.875 10.5V9.75H19.5ZM19.1762 8.25L18.0762 5.25H5.92383L4.82383 8.25H19.1762ZM4.5 9.75V10.5C4.5 11.2965 5.11439 11.8929 5.8125 11.8929C6.51061 11.8929 7.125 11.2965 7.125 10.5V9.75H4.5ZM8.625 9.75V10.5C8.625 11.2965 9.23939 11.8929 9.9375 11.8929C10.6356 11.8929 11.25 11.2965 11.25 10.5V9.75H8.625ZM12.75 9.75V10.5C12.75 11.2965 13.3644 11.8929 14.0625 11.8929C14.7606 11.8929 15.375 11.2965 15.375 10.5V9.75H12.75Z" fill="#ffffff"></path> </g></svg> -->
+                        <!-- <svg style="height: 120px;" viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10.9426 8.674C10.9426 8.25979 10.6068 7.924 10.1926 7.924C9.77842 7.924 9.44263 8.25979 9.44263 8.674H10.9426ZM15.5566 8.674C15.5566 8.25979 15.2208 7.924 14.8066 7.924C14.3924 7.924 14.0566 8.25979 14.0566 8.674H15.5566ZM9.44274 8.66112C9.43563 9.07527 9.76559 9.41677 10.1797 9.42389C10.5939 9.43101 10.9354 9.10104 10.9425 8.68688L9.44274 8.66112ZM10.9525 8.10488C10.9596 7.69073 10.6297 7.34923 10.2155 7.34211C9.80136 7.33499 9.45986 7.66496 9.45274 8.07912L10.9525 8.10488ZM10.9201 8.85645C11.0209 8.45468 10.7769 8.04729 10.3751 7.94653C9.97331 7.84577 9.56593 8.08978 9.46516 8.49155L10.9201 8.85645ZM10.0356 9.3L10.7613 9.48948L10.7631 9.48245L10.0356 9.3ZM8.60872 10.8759L8.8691 11.5792H8.8691L8.60872 10.8759ZM6.927 9.99268C6.58662 9.75665 6.11934 9.84124 5.88331 10.1816C5.64728 10.522 5.73187 10.9893 6.07226 11.2253L6.927 9.99268ZM7.24959 10.6167C7.25384 10.2025 6.92151 9.86328 6.50732 9.85904C6.09312 9.85479 5.75392 10.1871 5.74967 10.6013L7.24959 10.6167ZM6.44463 15.976L7.19458 15.985L7.19459 15.9837L6.44463 15.976ZM7.02186 17.4058L6.48838 17.9329H6.48838L7.02186 17.4058ZM8.44463 18V17.25H8.44458L8.44463 18ZM10.4996 18.75C10.9138 18.75 11.2496 18.4142 11.2496 18C11.2496 17.5858 10.9138 17.25 10.4996 17.25V18.75ZM6.07039 11.224C6.41006 11.4611 6.87759 11.3779 7.11465 11.0382C7.35172 10.6986 7.26854 10.231 6.92887 9.99398L6.07039 11.224ZM5.57863 8.092L4.87557 7.83085C4.86723 7.85329 4.85997 7.87612 4.85382 7.89926L5.57863 8.092ZM6.41363 5.844L7.1167 6.10515C7.12393 6.08569 7.13034 6.06594 7.13593 6.04594L6.41363 5.844ZM7.52263 5V4.25L7.52046 4.25L7.52263 5ZM17.4756 5L17.4778 4.25H17.4756V5ZM18.5846 5.844L17.8623 6.04595C17.8679 6.0659 17.8743 6.08562 17.8815 6.10505L18.5846 5.844ZM19.4196 8.093L20.1445 7.90034C20.1383 7.87721 20.1311 7.85439 20.1227 7.83195L19.4196 8.093ZM18.0701 9.99422C17.7305 10.2315 17.6476 10.699 17.8848 11.0386C18.1221 11.3781 18.5897 11.461 18.9292 11.2238L18.0701 9.99422ZM9.74963 18C9.74963 18.4142 10.0854 18.75 10.4996 18.75C10.9138 18.75 11.2496 18.4142 11.2496 18H9.74963ZM13.7496 18C13.7496 18.4142 14.0854 18.75 14.4996 18.75C14.9138 18.75 15.2496 18.4142 15.2496 18H13.7496ZM10.4996 17.25C10.0854 17.25 9.74963 17.5858 9.74963 18C9.74963 18.4142 10.0854 18.75 10.4996 18.75V17.25ZM14.4996 18.75C14.9138 18.75 15.2496 18.4142 15.2496 18C15.2496 17.5858 14.9138 17.25 14.4996 17.25V18.75ZM14.0567 8.68302C14.0617 9.0972 14.4015 9.42893 14.8157 9.42395C15.2298 9.41896 15.5616 9.07916 15.5566 8.66498L14.0567 8.68302ZM15.5496 8.08298C15.5446 7.6688 15.2048 7.33707 14.7906 7.34205C14.3764 7.34704 14.0447 7.68684 14.0497 8.10102L15.5496 8.08298ZM15.5369 8.49073C15.4357 8.08907 15.028 7.84552 14.6264 7.94674C14.2247 8.04796 13.9811 8.45562 14.0824 8.85727L15.5369 8.49073ZM14.9666 9.297L14.2393 9.48028L14.2409 9.48622L14.9666 9.297ZM16.3915 10.8729L16.1304 11.5759L16.3915 10.8729ZM18.926 11.226C19.2667 10.9906 19.3521 10.5235 19.1167 10.1827C18.8812 9.84189 18.4141 9.7565 18.0733 9.99195L18.926 11.226ZM19.2496 10.6017C19.2456 10.1875 18.9066 9.85502 18.4924 9.85904C18.0782 9.86305 17.7457 10.2021 17.7497 10.6163L19.2496 10.6017ZM18.5516 15.976L17.8017 15.9833L17.8017 15.985L18.5516 15.976ZM17.9744 17.4058L17.4409 16.8786L17.9744 17.4058ZM16.5516 18L16.5517 17.25H16.5516V18ZM14.4996 17.25C14.0854 17.25 13.7496 17.5858 13.7496 18C13.7496 18.4142 14.0854 18.75 14.4996 18.75V17.25ZM9.44263 8.674C9.44263 10.3623 10.8113 11.731 12.4996 11.731V10.231C11.6397 10.231 10.9426 9.53391 10.9426 8.674H9.44263ZM12.4996 11.731C14.188 11.731 15.5566 10.3623 15.5566 8.674H14.0566C14.0566 9.53391 13.3595 10.231 12.4996 10.231V11.731ZM10.9425 8.68688L10.9525 8.10488L9.45274 8.07912L9.44274 8.66112L10.9425 8.68688ZM9.46516 8.49155L9.30816 9.11755L10.7631 9.48245L10.9201 8.85645L9.46516 8.49155ZM9.30996 9.11053C9.18207 9.60032 8.82307 9.9968 8.34835 10.1725L8.8691 11.5792C9.80324 11.2334 10.5097 10.4533 10.7613 9.48947L9.30996 9.11053ZM8.34835 10.1725C7.87362 10.3483 7.34299 10.2811 6.927 9.99268L6.07226 11.2253C6.89081 11.7929 7.93496 11.9251 8.8691 11.5792L8.34835 10.1725ZM5.74967 10.6013L5.69467 15.9683L7.19459 15.9837L7.24959 10.6167L5.74967 10.6013ZM5.69469 15.967C5.68586 16.702 5.9717 17.41 6.48838 17.9329L7.55535 16.8786C7.32049 16.6409 7.19057 16.3191 7.19458 15.985L5.69469 15.967ZM6.48838 17.9329C7.00507 18.4558 7.70959 18.7501 8.44469 18.75L8.44458 17.25C8.11044 17.25 7.7902 17.1163 7.55535 16.8786L6.48838 17.9329ZM8.44463 18.75H10.4996V17.25H8.44463V18.75ZM6.92887 9.99398C6.38194 9.61226 6.13204 8.92931 6.30344 8.28474L4.85382 7.89926C4.52041 9.15305 5.00651 10.4815 6.07039 11.224L6.92887 9.99398ZM6.2817 8.35315L7.1167 6.10515L5.71057 5.58285L4.87557 7.83085L6.2817 8.35315ZM7.13593 6.04594C7.18473 5.8714 7.34356 5.75052 7.5248 5.75L7.52046 4.25C6.66795 4.25247 5.92088 4.82103 5.69133 5.64206L7.13593 6.04594ZM7.52263 5.75H17.4756V4.25H7.52263V5.75ZM17.4735 5.75C17.6547 5.75052 17.8135 5.8714 17.8623 6.04595L19.3069 5.64205C19.0774 4.82103 18.3303 4.25247 17.4778 4.25L17.4735 5.75ZM17.8815 6.10505L18.7165 8.35405L20.1227 7.83195L19.2877 5.58295L17.8815 6.10505ZM18.6948 8.28566C18.866 8.92987 18.6164 9.61242 18.0701 9.99422L18.9292 11.2238C19.9921 10.4811 20.4775 9.15344 20.1445 7.90034L18.6948 8.28566ZM11.2496 18V15H9.74963V18H11.2496ZM11.2496 15C11.2496 14.8619 11.3616 14.75 11.4996 14.75V13.25C10.5331 13.25 9.74963 14.0335 9.74963 15H11.2496ZM11.4996 14.75H13.4996V13.25H11.4996V14.75ZM13.4996 14.75C13.6377 14.75 13.7496 14.8619 13.7496 15H15.2496C15.2496 14.0335 14.4661 13.25 13.4996 13.25V14.75ZM13.7496 15V18H15.2496V15H13.7496ZM10.4996 18.75H14.4996V17.25H10.4996V18.75ZM15.5566 8.66498L15.5496 8.08298L14.0497 8.10102L14.0567 8.68302L15.5566 8.66498ZM14.0824 8.85727L14.2394 9.48027L15.6939 9.11373L15.5369 8.49073L14.0824 8.85727ZM14.2409 9.48622C14.492 10.4494 15.1973 11.2294 16.1304 11.5759L16.6526 10.1698C16.1784 9.99367 15.82 9.59726 15.6924 9.10778L14.2409 9.48622ZM16.1304 11.5759C17.0635 11.9225 18.107 11.7919 18.926 11.226L18.0733 9.99195C17.6571 10.2795 17.1268 10.3459 16.6526 10.1698L16.1304 11.5759ZM17.7497 10.6163L17.8017 15.9833L19.3016 15.9687L19.2496 10.6017L17.7497 10.6163ZM17.8017 15.985C17.8057 16.3191 17.6758 16.6409 17.4409 16.8786L18.5079 17.9329C19.0246 17.41 19.3104 16.702 19.3016 15.967L17.8017 15.985ZM17.4409 16.8786C17.2061 17.1163 16.8858 17.25 16.5517 17.25L16.5516 18.75C17.2867 18.7501 17.9912 18.4558 18.5079 17.9329L17.4409 16.8786ZM16.5516 17.25H14.4996V18.75H16.5516V17.25Z" fill="#ffffff"></path> </g></svg> -->
+                    </div>
+                    <div>
+                        <svg style="height: 100px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path
+                                    d="M16.8218 5.1344C16.0887 4.29394 15.648 3.19805 15.648 2H14.7293C14.9659 3.3095 15.7454 4.43326 16.8218 5.1344Z"
+                                    fill="#ffffff"></path>
+                                <path
+                                    d="M8.3218 11.9048C6.73038 11.9048 5.43591 13.2004 5.43591 14.7931C5.43591 15.903 6.06691 16.8688 6.98556 17.3517C6.64223 16.8781 6.43808 16.2977 6.43808 15.6661C6.43808 14.0734 7.73255 12.7778 9.324 12.7778C9.62093 12.7778 9.90856 12.8288 10.1777 12.9124V9.40192C9.89927 9.36473 9.61628 9.34149 9.324 9.34149C9.27294 9.34149 9.22654 9.34614 9.1755 9.34614V12.0394C8.90176 11.9558 8.61873 11.9048 8.3218 11.9048Z"
+                                    fill="#ffffff"></path>
+                                <path
+                                    d="M19.4245 6.67608V9.34614C17.6429 9.34614 15.9912 8.77501 14.6456 7.80911V14.7977C14.6456 18.2851 11.8108 21.127 8.32172 21.127C6.97621 21.127 5.7235 20.6998 4.69812 19.98C5.8534 21.2198 7.50049 22 9.32392 22C12.8083 22 15.6478 19.1627 15.6478 15.6707V8.68211C16.9933 9.64801 18.645 10.2191 20.4267 10.2191V6.78293C20.0787 6.78293 19.7446 6.74574 19.4245 6.67608Z"
+                                    fill="#ffffff"></path>
+                                <path
+                                    d="M14.6456 14.7977V7.80911C15.9912 8.77501 17.6429 9.34614 19.4245 9.34614V6.67608C18.3945 6.45788 17.4899 5.90063 16.8218 5.1344C15.7454 4.43326 14.9704 3.3095 14.7245 2H12.2098L12.2051 15.7775C12.1495 17.3192 10.8782 18.5591 9.32393 18.5591C8.35884 18.5591 7.50977 18.0808 6.98085 17.3564C6.06219 16.8688 5.4312 15.9076 5.4312 14.7977C5.4312 13.205 6.72567 11.9094 8.31708 11.9094C8.61402 11.9094 8.90168 11.9605 9.17079 12.0441V9.35079C5.75598 9.42509 3 12.2298 3 15.6707C3 17.3331 3.64492 18.847 4.69812 19.98C5.7235 20.6998 6.97621 21.127 8.32172 21.127C11.8061 21.127 14.6456 18.2851 14.6456 14.7977Z"
+                                    fill="#ffffff"></path>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+    <section>
+        <div style="display: flex; position: relative;" id="production">
+            <img src="./img/service-production.png" alt="" style="width: 60%;">
+            <div style="width: 30px; background: #35728F; ">
+
+            </div>
+            <div class="box-detail-service" style="">
+                <div style="display: flex; position: relative; justify-content: end;">
+                    <button class="btn-detail"
+                        onclick="window.location.href='/production.html'">ดูรายละเอียดเพิ่มเติม</button>
+                    <div class="circle-org">
+
+                    </div>
+                </div>
+                <div class="title-service">
+                    PRODUCTION <br>
+                    PACKAGE
+                </div>
+                <div class="subtitle-service">
+                    สร้างสื่อคุณภาพระดับมืออาชีพ
+                </div>
+            </div>
+            <div style="position: absolute; left: 55%; top: 10px;">
+                <img src="./img/icon-arrow-right.png" alt="" class="img-arrow">
+            </div>
+        </div>
+        <div style="display: flex; position: relative;" id="short-video">
+
+            <div style="width: 30px; background: #35728F; ">
+
+            </div>
+            <div class="box-detail-service">
+                <div style="display: flex; position: relative; justify-content: end; margin-top: 40px;">
+                    <button class="btn-detail"
+                        onclick="window.location.href='/short-video.html'">ดูรายละเอียดเพิ่มเติม</button>
+                    <div class="circle-org">
+
+                    </div>
+                </div>
+                <div class="title-service">
+                    SHORT VDO <br>
+                    PACKAGE
+                </div>
+                <div class="subtitle-service">
+                    สื่อสารแบรนด์ผ่านวีดีโอสั้น <br>
+                    อย่างมีกลยุทธ์
+                </div>
+            </div>
+            <img src="./img/service-shortvdo.png" alt="" style="width: 60%;">
+            <div style="position: absolute; left: 35%; top: 150px;">
+                <img src="./img/icon-arrow-right.png" alt="" class="img-arrow" style="-webkit-transform: scaleX(-1);
+  transform: scaleX(-1);">
+            </div>
+        </div>
+        <div style="display: flex; position: relative;" id="graphic-design">
+            <img src="./img/service-graphic.png" alt="" style="width: 60%;">
+            <div style="width: 30px; background: #35728F; ">
+
+            </div>
+            <div class="box-detail-service">
+                <div style="display: flex; position: relative; justify-content: end;">
+                    <button class="btn-detail"
+                        onclick="window.location.href='/graphic-design.html'">ดูรายละเอียดเพิ่มเติม</button>
+                    <div class="circle-org">
+
+                    </div>
+                </div>
+                <div class="title-service">
+                    GRAPHIC <br>
+                    DESIGN
+                </div>
+                <div class="subtitle-service">
+                    สร้างสื่อภาพที่สะท้อนตัวตนแบรนด์ <br>
+                    อย่างชัดเจน
+                </div>
+            </div>
+            <div style="position: absolute; left: 55%; top: 40px;">
+                <img src="./img/icon-arrow-right.png" alt="" class="img-arrow">
+            </div>
+        </div>
+        <div style="display: flex; position: relative;" id="motion-design">
+
+            <div style="width: 30px; background: #35728F; ">
+
+            </div>
+            <div class="box-detail-service">
+                <div style="display: flex; position: relative; justify-content: end;">
+                    <button class="btn-detail"
+                        onclick="window.location.href='/motion-design.html'">ดูรายละเอียดเพิ่มเติม</button>
+                    <div class="circle-org">
+
+                    </div>
+                </div>
+                <div class="title-service">
+                    MOTION <br>
+                    GRAPHIC
+                </div>
+                <div class="subtitle-service">
+                    เพิ่มลูกเล่นให้แบรนด์ <br>
+                    ด้วยกราฟิกที่เคลื่อนไหวได้
+                </div>
+            </div>
+            <img src="./img/service-motion.png" alt="" style="width: 60%;">
+            <div style="position: absolute; left: 35%; top: 150px;">
+                <img src="./img/icon-arrow-right.png" alt="" class="img-arrow" style=" -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);">
+            </div>
+        </div>
+        <div style="display: flex; position: relative;" id="packshot">
+            <img src="./img/service-production.png" alt="" style="width: 60%;">
+            <div style="width: 30px; background: #35728F; ">
+
+            </div>
+            <div class="box-detail-service">
+                <div style="display: flex; position: relative; justify-content: end;">
+                    <button class="btn-detail"
+                        onclick="window.location.href='/packshot.html'">ดูรายละเอียดเพิ่มเติม</button>
+                    <div class="circle-org">
+
+                    </div>
+                </div>
+                <div class="title-service">
+                    PACKSHOT <br>
+
+                </div>
+                <div class="subtitle-service">
+                    วีดีโอและภาพนิ่งที่ถ่ายทอด <br>
+                    จุดเด่นของสินค้าที่มีประสิทธิภาพ
+                </div>
+            </div>
+            <div style="position: absolute; left: 55%; top: 20px;">
+                <img src="./img/icon-arrow-right.png" alt="" class="img-arrow">
+            </div>
+        </div>
+        <div style="display: flex; position: relative;" id="studio">
+
+            <div style="width: 30px; background: #35728F; ">
+
+            </div>
+            <div class="box-detail-service">
+                <div style="display: flex; position: relative; justify-content: end;">
+                    <button class="btn-detail"
+                        onclick="window.location.href='/studio.html'">ดูรายละเอียดเพิ่มเติม</button>
+                    <div class="circle-org">
+
+                    </div>
+                </div>
+                <div class="title-service">
+                    STUDIO<br>
+
+                </div>
+                <div class="subtitle-service">
+                    สตูดิโอมาตราฐาน <br>
+                    สําหรับผลิตสื่อคุณภาพ
+                </div>
+            </div>
+            <img src="./img/service-studio.png" alt="" style="width: 60%;">
+            <div style="position: absolute; left: 35%; top: 140px;">
+                <img src="./img/icon-arrow-right.png" alt="" class="img-arrow" style=" -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);">
+            </div>
+        </div>
+        <div style="display: flex; position: relative;" id="strategic-brand">
+            <img src="./img/service-brand.png" alt="" style="width: 60%;">
+            <div style="width: 30px; background: #35728F; ">
+
+            </div>
+            <div
+                style="margin-top: -10px; width: 40%; display: flex; flex-direction: column; justify-content: center;  padding: 30px;">
+                <div style="display: flex; position: relative; justify-content: end;">
+                    <button class="btn-detail"
+                        onclick="window.location.href='/strategic-brand.html'">ดูรายละเอียดเพิ่มเติม</button>
+                    <div class="circle-org">
+
+                    </div>
+                </div>
+                <div class="title-service">
+                    STRATEGIC & <br>
+                    BRAND <br>
+                    COMMUNICATE
+                </div>
+                <div class="subtitle-service">
+                    วางแผนและถ่ายทอดตัวตนแบรนด์ <br>
+                    อย่างมีทิศทางเพื่อสร้างภาพจํา <br>
+                    และเชื่อมใจกลุ่มเป้าหมาย
+                </div>
+            </div>
+            <div style="position: absolute; left: 55%; top: 10px;">
+                <img src="./img/icon-arrow-right.png" alt="" class="img-arrow">
+            </div>
+        </div>
+        <div style="display: flex; position: relative;" id="media-buyer">
+
+            <div style="width: 30px; background: #35728F; ">
+
+            </div>
+            <div
+                style="margin-top: -70px; width: 40%; display: flex; flex-direction: column; justify-content: center;  padding: 30px;">
+                <div style="display: flex; position: relative; justify-content: end;">
+                    <button class="btn-detail"
+                        onclick="window.location.href='/media-buyer.html'">ดูรายละเอียดเพิ่มเติม</button>
+                    <div class="circle-org">
+
+                    </div>
+                </div>
+                <div class="title-service">
+                    MEDIA <br>
+                    BUYER
+                </div>
+                <div class="subtitle-service">
+                    บริหารงบโฆษณาอย่างมีประสิทธิภาพ<br>
+                    เจาะตรงกลุ่มเป้าหมาย ผ่านช่องทาง<br>
+                    ที่เหมาะสม
+                </div>
+            </div>
+            <img src="./img/service-mediabuyer.png" alt="" style="width: 60%;">
+            <div style="position: absolute; left: 35%; top: 100px;">
+                <img src="./img/icon-arrow-right.png" alt="" class="img-arrow" style="-webkit-transform: scaleX(-1);
+  transform: scaleX(-1);">
+            </div>
+        </div>
+        <div style="display: flex; position: relative;" id="influ">
+            <img src="./img/service-influ.png" alt="" style="width: 60%;">
+            <div style="width: 30px; background: #35728F; ">
+
+            </div>
+            <div class="box-detail-service">
+                <div style="display: flex; position: relative; justify-content: end;">
+                    <button class="btn-detail"
+                        onclick="window.location.href='/influencer.html'">ดูรายละเอียดเพิ่มเติม</button>
+                    <div class="circle-org">
+
+                    </div>
+                </div>
+                <div class="title-service">
+                    INFLUENCER & <br>
+                    KOLs MARKETING
+                </div>
+                <div class="subtitle-service">
+                    สร้างสื่อคุณภาพระดับมืออาชีพ
+                </div>
+            </div>
+            <div style="position: absolute; left: 55%; top: 10px;">
+                <img src="./img/icon-arrow-right.png" alt="" class="img-arrow">
+            </div>
+        </div>
+
+    </section>
+    <section>
+        <div style="position: relative;">
+            <div>
+                <img src="./img/faq-bg.png" alt="" style="width: 100%;">
+            </div>
+            <div
+                style="position: absolute; top: 0; width: 100%; height: 100%; display: flex; align-items: center; margin: auto;">
+                <div style="width: 90%; margin: auto; display: flex;">
+                    <div style="width: 30%;">
+                        <img src="./img/faq-salmon.png" alt="" style="width: 100%;">
+                    </div>
+                    <div style="color: #fff; padding-left: 100px; width: 70%;">
+                        <div style="font-size: 50px; font-weight: 600;">FAQ:</div>
+                        <div>
+                            <div style="" class="question" onclick="toggleAnswer(this)">
+                                <span class="toggle-icon">
+                                    +
+                                </span>
+                                <span>ทําไมทําการตลาดต้อง SmartSalmon?</span>
+                            </div>
+                            <div class="answer" style="">
+                                เพราะเรามีทีมผู้เชี่ยวชาญเฉพาะทางครบทุกด้าน พร้อมผลงาน
+                                ที่พิสูจน์ได้ถึงความสําเร็จในการเพิ่มยอดขาย
+                            </div>
+                        </div>
+                        <div>
+                            <div style="" class="question" onclick="toggleAnswer(this)">
+                                <span class="toggle-icon">
+                                    +
+                                </span>
+                                <span>ลูกค้าต้องเตรียมอะไรบ้างก่อนเริ่มงาน?</span>
+                            </div>
+                            <div class="answer" style="">
+                                แค่แจ้งเป้าหมายทางธุรกิจ กลุ่มเป้าหมาย สินค้าและบริการ ที่ต้องการสื่อสาร
+                                ทางเราจะวางแผนให้อย่างครบถ้วน
+                            </div>
+                        </div>
+                        <div>
+                            <div style="" class="question" onclick="toggleAnswer(this)">
+                                <span class="toggle-icon">
+                                    +
+                                </span>
+                                <span>บริการของ SmartSalmon ครอบคลุมอะไรบ้าง?</span>
+                            </div>
+                            <div class="answer" style="">
+                                เราดูแลครบตัองแต่กลยุทธ์ การผลิตคอนเทนต์คลิปวิดิโอ
+                                รูปภาพและยิงแอดโฆษณาในช่องทางออนไลน์
+                            </div>
+                        </div>
+                        <div>
+                            <div style="" class="question" onclick="toggleAnswer(this)">
+                                <span class="toggle-icon">
+                                    +
+                                </span>
+                                <span>มีค่าใช้จ่ายเพิ่มเติมในการเดินทางไหม?</span>
+                            </div>
+                            <div class="answer" style="">
+                                กรุงเทพและปริมณฑลไม่มีค่าใช้จ่ายในการเดินทาง
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+    <section id="contact">
+        <div style="position: relative; margin-top: -8px;">
+            <div>
+                <img src="./img/footer-bg.png" alt="" style="width: 100%;">
+            </div>
+            <div
+                style="position: absolute; top: 0; width: 100%; height: 100%; display: flex; align-items: center; margin: auto; flex-direction: column;">
+
+                <div
+                    style="width: 90%; margin: auto; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="width: 50%;">
+                        <div style="font-size: 50px; color: #fff; font-weight: 600;">CONTACT US</div>
+                        <img src="./img/footer-contact.png" alt="" style="width:100%;">
+
+                    </div>
+
+                    <div style="width: 40%;">
+                        <form id="contactForm"
+                            style="display: flex; flex-direction: column; width: 100%; align-items: center;">
+
+
+
+                            <input type="text" id="name" required placeholder="Name" class="input">
+                            <input type="text" id="email" required placeholder="Email" class="input">
+                            <input type="text" id="phone" required placeholder="Phone" class="input">
+                            <textarea rows="4" type="text" id="message" required placeholder="Type your message here"
+                                class="input"></textarea>
+
+
+                            <button type="submit" class="btn-submit">Submit</button>
+
+                            <div id="response" class=""></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div style="background-color: #CF5E47; margin-top: -7px; ">
+            <div style="width: 90%; margin: auto;display: flex; padding: 30px 0px;">
+                <div style="width: 50%;">
+                    <div style="font-size: 48px; font-weight: 700; color: #fff;">SmartSalmon</div>
+                    <div style="font-size: 32px; color: #fff; margin-top: -20px;">Marketing Solution</div>
+                    <div style="display: flex; height: 180px; margin-left: 20px;">
+                        <div style="background: #fff; width: 3px;"></div>
+                        <div
+                            style="color: #fff; font-size: 24px; line-height: 30px; align-self: end; margin-left: 10px;">
+                            “Make your vision come true” <br>
+                            Best Budget Best Quality
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 50%; height: 280px;">
+                    <div style="display: flex; height: 280px; margin-left: 20px;">
+                        <div style="background: #fff; width: 3px;"></div>
+                        <div
+                            style="color: #fff; font-size: 24px; line-height: 40px; align-self: end; margin-left: 30px;     margin-bottom: 20px;">
+                            <div style="font-weight: 700; font-size: 32px;">Our Service.</div>
+                            <div style="display: flex;">
+                                <li>
+                                    Production Package
+                                </li>
+                                <li style="margin-left: 100px;">
+                                    Packshot
+                                </li>
+                            </div>
+                            <div style="display: flex;">
+                                <li>
+                                    Creative Content
+                                </li>
+                                <li style="margin-left: 133px;">
+                                    Studio
+                                </li>
+                            </div>
+                            <div style="display: flex;">
+                                <li>
+                                    Graphic Design
+                                </li>
+                                <li style="margin-left: 154px;">
+                                    Media Buyer
+                                </li>
+                            </div>
+
+                            <div style="display: flex;">
+                                <li>
+                                    Motion Graphic
+                                </li>
+                                <li style="margin-left: 153px;">
+                                    KOLs Marketing
+                                </li>
+                            </div>
+
+                            <li>Strategic & Media Communication</li>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    </section>
+</body>
+
+</html>

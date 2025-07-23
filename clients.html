@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Smart Salmon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+Thai:wght@100..900&display=swap"
+        rel="stylesheet">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+              .btn-submit {
+            width: fit-content;
+            font-size: 18px;
+            color: #fff;
+            background: #3E7087;
+            border: none;
+            padding: 5px 20px;
+            margin-top: 20px;
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        input::placeholder {
+            color: #fff;
+
+            opacity: 0.5;
+        }
+
+        textarea:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        textarea::placeholder {
+            color: #fff;
+
+            opacity: 0.5;
+        }
+
+        .input {
+            border: none;
+            background: none;
+            font-size: 24px;
+            color: #fff;
+            width: 100%;
+            border-bottom: 1px solid #fff;
+            font-family: "Kanit", sans-serif;
+            margin-top: 10px;
+        }
+
+        body {
+            width: 100% !important;
+            max-width: 100% !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            font-family: "Kanit", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        button {
+            font-family: "Kanit", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-column {
+            flex-direction: column;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .aling-center {
+            align-items: center;
+        }
+
+        .font-link {
+            text-decoration: none;
+            font-size: 32px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .font-tab {
+            text-decoration: none;
+            font-size: 28px;
+            font-weight: 300;
+            color: #fff;
+        }
+
+        .active {
+            background-color: #121525;
+            padding: 8px 40px;
+            border-radius: 100px;
+        }
+
+        .btn-submit {
+            width: fit-content;
+            font-size: 24px;
+            color: #fff;
+            background: #3E7087;
+            border: none;
+            padding: 5px 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div
+            style="display: flex; width: 90%; margin: auto; justify-content: space-between; align-items: center; padding: 10px 0px;">
+            <div style="width: 15%;">
+                <img src="./img/logo-salmon.png" alt="" style="width: 100%;">
+            </div>
+            <div style="display: flex; align-items: center;">
+                <a href="http://" class="font-link" style="margin-right: 60px;">Picture</a>
+                <a href="http://" class="font-link" style="margin-right: 60px;">Video</a>
+                <a href="http://" class="font-link">
+                    <div style="text-align: center; line-height: 1;">Behide <br>The Scene</div>
+                </a>
+            </div>
+            <div style="width: 6%;">
+                <a href="/"><img src="./img/icon-back.png" alt="" style="width: 100%;"></a>
+            </div>
+        </div>
+        <div style="width: 100%; display: flex; justify-content: end;">
+            <img src="./img/bg-clents.png" alt="" style="width: 98%;">
+        </div>
+
+    </section>
+    <section>
+        <div style="width: 90%; margin: auto;">
+            <div
+                style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 40px;">
+                <div
+                    style=" background-color: #3E7087; display: flex; align-items: center; padding: 5px 20px; border-radius: 100px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                    <a href="http://" class="font-tab active" style="margin-right: 60px;">Picture</a>
+                    <a href="http://" class="font-tab" style="margin-right: 60px;">Video</a>
+                    <a href="http://" class="font-tab">
+                        <div style="text-align: center; line-height: 1;">Behide <br>The Scene</div>
+                    </a>
+                </div>
+                <div
+                    style="width: 100%; margin-top: 40px; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="width: 32%; ">
+                        <div
+                            style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; color: #fff; padding: 30px; background-color: #3E7087; border-radius: 40px 120px 40px 40px ; ">
+                            <div style="font-size: 60px; font-weight: 500;">
+                                PICTURE
+                            </div>
+                            <div style="padding: 60px 0px; font-size: 24px; line-height: 1.3;">
+                                รูปภาพกราฟฟิค <br>
+                                อาร์ตเวิร์ค และสื่อโฆษณา
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 32%;">
+                        <img src="./img/production/img1.jpg" alt=""
+                            style="height: 580px; object-fit: cover; border-radius: 40px; width: 100%; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                    </div>
+                    <div style="width: 32%;">
+                        <div
+                            style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; color: #fff; padding: 20px; background-color: #121525; border-radius: 40px 40px 40px 40px ; padding-bottom: 80px;  ">
+                            <div style="font-size: 40px; font-weight: 500;">
+                                ArtWork#1
+                            </div>
+                            <div style="font-size: 32px; font-weight: 400; margin-top: -20px;">
+                                Customer#1
+                            </div>
+
+                        </div>
+                        <div
+                            style="margin-top: -60px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; color: #fff; padding: 20px; background-color: #3E7087; border-radius: 40px 40px 40px 40px ; padding-bottom: 80px;  ">
+                            <div style="font-size: 40px; font-weight: 500;">
+                                ArtWork#1
+                            </div>
+                            <div style="font-size: 32px; font-weight: 400; margin-top: -20px;">
+                                Customer#1
+                            </div>
+
+                        </div>
+                        <div
+                            style="margin-top: -60px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; color: #fff; padding: 20px; background-color: #CF5E47; border-radius: 40px 40px 40px 40px ; padding-bottom: 80px;  ">
+                            <div style="font-size: 40px; font-weight: 500;">
+                                ArtWork#1
+                            </div>
+                            <div style="font-size: 32px; font-weight: 400; margin-top: -20px;">
+                                Customer#1
+                            </div>
+
+                        </div>
+
+                        <div
+                            style="margin-top: -60px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; color: #000; padding: 20px; background-color: #fff; border-radius: 40px 40px 40px 40px ; padding-bottom: 80px;  ">
+                            <div style="font-size: 40px; font-weight: 500;">
+                                ArtWork#1
+                            </div>
+                            <div style="font-size: 32px; font-weight: 400; margin-top: -20px;">
+                                Customer#1
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <section>
+        <div style="position: relative;">
+            <img src="./img/title-clients.png" alt="" style="width: 100%;">
+            <div style="position: absolute; top: 50px; color: #fff; left: 50px;">
+
+                <div style="font-size: 40px; font-weight: 500;">
+                    ArtWork#1
+                </div>
+                <div style="font-size: 32px; font-weight: 400; margin-top: -20px;">
+                    Customer#1
+                </div>
+            </div>
+        </div>
+        <div
+            style="margin-top: -80px; background-color: #e85133; width: 100%; border-bottom-left-radius: 50px; border-top-right-radius: 50px;">
+            <div style="width: 90%; margin: auto; padding: 60px 0px;">
+                <h1 style="text-align: center; font-size: 48px;  margin-bottom: 0px; color: #fff; font-weight: 400;">
+                    Others Artwork</h1>
+                <hr style="width: 25%; height: 3px; background-color: #fff; border: none;">
+                <div style="padding: 50px 0px; display: flex; justify-content: space-between;">
+                    <div style="width: 30%; ">
+                        <img src="./img/production/img1.jpg" alt="" style="width: 100%; ">
+                    </div>
+
+                    <div style="width: 30%;">
+                        <img src="./img/production/img1.jpg" alt="" style="width: 100%; ">
+                    </div>
+
+                    <div style="width: 30%;">
+                        <img src="./img/production/img1.jpg" alt="" style="width: 100%; ">
+                    </div>
+
+
+
+                </div>
+                <div class=" flex justify-center"> <button class="btn-submit">See More</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section>
+        <div style="width: 90%; margin: auto;">
+            <div
+                style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 40px;">
+                <div
+                    style=" background-color: #3E7087; display: flex; align-items: center; padding: 5px 20px; border-radius: 100px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                    <a href="http://" class="font-tab " style="margin-right: 60px;">Picture</a>
+                    <a href="http://" class="font-tab active" style="margin-right: 60px;">Video</a>
+                    <a href="http://" class="font-tab">
+                        <div style="text-align: center; line-height: 1;">Behide <br>The Scene</div>
+                    </a>
+                </div>
+                <div
+                    style="width: 100%; margin-top: 40px; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="width: 32%; ">
+                        <div
+                            style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; color: #fff; padding: 30px; background-color: #3E7087; border-radius: 40px 120px 40px 40px ; ">
+                            <div style="font-size: 60px; font-weight: 500;">
+                                VIDEO
+                            </div>
+                            <div style="padding: 60px 0px; font-size: 24px; line-height: 1.3;">
+                                ผลงานคอนเทนต์วีดีโอ <br>และแอดโฆษณา
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 32%;">
+                        <img src="./img/production/img1.jpg" alt=""
+                            style="height: 580px; object-fit: cover; border-radius: 40px; width: 100%; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                    </div>
+                    <div style="width: 32%;">
+                        <div
+                            style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; color: #fff; padding: 20px; background-color: #121525; border-radius: 40px 40px 40px 40px ; padding-bottom: 80px;  ">
+                            <div style="font-size: 40px; font-weight: 500;">
+                                Video#1
+                            </div>
+                            <div style="font-size: 32px; font-weight: 400; margin-top: -20px;">
+                                Customer#1
+                            </div>
+
+                        </div>
+                        <div
+                            style="margin-top: -60px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; color: #fff; padding: 20px; background-color: #3E7087; border-radius: 40px 40px 40px 40px ; padding-bottom: 80px;  ">
+                            <div style="font-size: 40px; font-weight: 500;">
+                                Video#1
+                            </div>
+                            <div style="font-size: 32px; font-weight: 400; margin-top: -20px;">
+                                Customer#1
+                            </div>
+
+                        </div>
+                        <div
+                            style="margin-top: -60px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; color: #fff; padding: 20px; background-color: #CF5E47; border-radius: 40px 40px 40px 40px ; padding-bottom: 80px;  ">
+                            <div style="font-size: 40px; font-weight: 500;">
+                                Video#1
+                            </div>
+                            <div style="font-size: 32px; font-weight: 400; margin-top: -20px;">
+                                Customer#1
+                            </div>
+
+                        </div>
+
+                        <div
+                            style="margin-top: -60px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; color: #000; padding: 20px; background-color: #fff; border-radius: 40px 40px 40px 40px ; padding-bottom: 80px;  ">
+                            <div style="font-size: 40px; font-weight: 500;">
+                                Video#1
+                            </div>
+                            <div style="font-size: 32px; font-weight: 400; margin-top: -20px;">
+                                Customer#1
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <section>
+        <div style="position: relative;">
+            <img src="./img/title-clients.png" alt="" style="width: 100%;">
+            <div style="position: absolute; top: 50px; color: #fff; left: 50px;">
+
+                <div style="font-size: 40px; font-weight: 500;">
+                    Video#1
+                </div>
+                <div style="font-size: 32px; font-weight: 400; margin-top: -20px;">
+                    Customer#1
+                </div>
+            </div>
+        </div>
+        <div
+            style="margin-top: -80px; background-color: #e85133; width: 100%; border-bottom-left-radius: 50px; border-top-right-radius: 50px;">
+            <div style="width: 90%; margin: auto; padding: 60px 0px;">
+                <h1 style="text-align: center; font-size: 48px;  margin-bottom: 0px; color: #fff; font-weight: 400;">
+                    Others Video</h1>
+                <hr style="width: 25%; height: 3px; background-color: #fff; border: none;">
+                <div style="padding: 50px 0px; display: flex; justify-content: space-between;">
+                    <div style="width: 30%; ">
+                        <img src="./img/production/img1.jpg" alt="" style="width: 100%; ">
+                    </div>
+
+                    <div style="width: 30%;">
+                        <img src="./img/production/img1.jpg" alt="" style="width: 100%; ">
+                    </div>
+
+                    <div style="width: 30%;">
+                        <img src="./img/production/img1.jpg" alt="" style="width: 100%; ">
+                    </div>
+
+
+
+                </div>
+                <div class=" flex justify-center"> <button class="btn-submit">See More</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+   <section>
+        <div style="width: 90%; margin: auto;">
+            <div
+                style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 40px;">
+                <div
+                    style=" background-color: #3E7087; display: flex; align-items: center; padding: 5px 20px; border-radius: 100px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                    <a href="http://" class="font-tab " style="margin-right: 60px;">Picture</a>
+                    <a href="http://" class="font-tab " style="margin-right: 60px;">Video</a>
+                    <a href="http://" class="font-tab active">
+                        <div style="text-align: center; line-height: 1;">Behide <br>The Scene</div>
+                    </a>
+                </div>
+                <div
+                    style="width: 100%; margin-top: 40px; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="width: 32%; ">
+                        <div
+                            style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; color: #fff; padding: 30px; background-color: #3E7087; border-radius: 40px 120px 40px 40px ; ">
+                            <div style="font-size: 60px; font-weight: 500; line-height: 1;">
+                                BEHIDE <br> THE SCENE
+                            </div>
+                            <div style="padding: 60px 0px; font-size: 24px; line-height: 1.3;">
+                                เบื้องหลังการทํางาน <br> ของทีมงานร่วมกับลูกค้า
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 32%;">
+                        <img src="./img/production/img1.jpg" alt=""
+                            style="height: 580px; object-fit: cover; border-radius: 40px; width: 100%; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                    </div>
+                    <div style="width: 32%;">
+                        <div
+                            style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; color: #fff; padding: 20px; background-color: #121525; border-radius: 40px 40px 40px 40px ; padding-bottom: 80px;  ">
+                            <div style="font-size: 40px; font-weight: 500;">
+                                Picture#1
+                            </div>
+                            <div style="font-size: 32px; font-weight: 400; margin-top: -20px;">
+                                Customer#1
+                            </div>
+
+                        </div>
+                        <div
+                            style="margin-top: -60px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; color: #fff; padding: 20px; background-color: #3E7087; border-radius: 40px 40px 40px 40px ; padding-bottom: 80px;  ">
+                            <div style="font-size: 40px; font-weight: 500;">
+                                Picture#1
+                            </div>
+                            <div style="font-size: 32px; font-weight: 400; margin-top: -20px;">
+                                Customer#1
+                            </div>
+
+                        </div>
+                        <div
+                            style="margin-top: -60px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; color: #fff; padding: 20px; background-color: #CF5E47; border-radius: 40px 40px 40px 40px ; padding-bottom: 80px;  ">
+                            <div style="font-size: 40px; font-weight: 500;">
+                                Picture#1
+                            </div>
+                            <div style="font-size: 32px; font-weight: 400; margin-top: -20px;">
+                                Customer#1
+                            </div>
+
+                        </div>
+
+                        <div
+                            style="margin-top: -60px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; color: #000; padding: 20px; background-color: #fff; border-radius: 40px 40px 40px 40px ; padding-bottom: 80px;  ">
+                            <div style="font-size: 40px; font-weight: 500;">
+                                Picture#1
+                            </div>
+                            <div style="font-size: 32px; font-weight: 400; margin-top: -20px;">
+                                Customer#1
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <section>
+        <div style="position: relative;">
+            <img src="./img/title-clients.png" alt="" style="width: 100%;">
+            <div style="position: absolute; top: 50px; color: #fff; left: 50px;">
+
+                <div style="font-size: 40px; font-weight: 500;">
+                    Picture#1
+                </div>
+                <div style="font-size: 32px; font-weight: 400; margin-top: -20px;">
+                    Customer#1
+                </div>
+            </div>
+        </div>
+        <div
+            style="margin-top: -80px; background-color: #e85133; width: 100%; border-bottom-left-radius: 50px; border-top-right-radius: 50px;">
+            <div style="width: 90%; margin: auto; padding: 60px 0px;">
+                <h1 style="text-align: center; font-size: 48px;  margin-bottom: 0px; color: #fff; font-weight: 400;">
+                    Others Picture</h1>
+                <hr style="width: 25%; height: 3px; background-color: #fff; border: none;">
+                <div style="padding: 50px 0px; display: flex; justify-content: space-between;">
+                    <div style="width: 30%; ">
+                        <img src="./img/production/img1.jpg" alt="" style="width: 100%; ">
+                    </div>
+
+                    <div style="width: 30%;">
+                        <img src="./img/production/img1.jpg" alt="" style="width: 100%; ">
+                    </div>
+
+                    <div style="width: 30%;">
+                        <img src="./img/production/img1.jpg" alt="" style="width: 100%; ">
+                    </div>
+
+
+
+                </div>
+                <div class=" flex justify-center"> <button class="btn-submit">See More</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+   <section>
+        <div style="position: relative; margin-top: -8px;">
+            <div>
+                <img src="./img/footer-bg.png" alt="" style="width: 100%;">
+            </div>
+            <div
+                style="position: absolute; top: 0; width: 100%; height: 100%; display: flex; align-items: center; margin: auto; flex-direction: column;">
+
+                <div
+                    style="width: 90%; margin: auto; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="width: 50%;">
+                        <div style="font-size: 50px; color: #fff; font-weight: 600;">CONTACT US</div>
+                        <img src="./img/footer-contact.png" alt="" style="width:100%;">
+
+                    </div>
+
+                    <div style="width: 40%;">
+                        <form id="contactForm"
+                            style="display: flex; flex-direction: column; width: 100%; align-items: center;">
+
+
+
+                            <input type="text" id="name" required placeholder="Name" class="input">
+                            <input type="text" id="email" required placeholder="Email" class="input">
+                            <input type="text" id="phone" required placeholder="Phone" class="input">
+                            <textarea rows="4" type="text" id="message" required placeholder="Type your message here"
+                                class="input"></textarea>
+
+
+                            <button type="submit" class="btn-submit">Submit</button>
+
+                            <div id="response" class=""></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div style="background-color: #CF5E47; margin-top: -7px; ">
+            <div style="width: 90%; margin: auto;display: flex; padding: 30px 0px;">
+                <div style="width: 50%;">
+                    <div style="font-size: 48px; font-weight: 700; color: #fff;">SmartSalmon</div>
+                    <div style="font-size: 32px; color: #fff; margin-top: -20px;">Marketing Solution</div>
+                    <div style="display: flex; height: 180px; margin-left: 20px;">
+                        <div style="background: #fff; width: 3px;"></div>
+                        <div
+                            style="color: #fff; font-size: 24px; line-height: 30px; align-self: end; margin-left: 10px;">
+                            “Make your vision come true” <br>
+                            Best Budget Best Quality
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 50%; height: 280px;">
+                    <div style="display: flex; height: 280px; margin-left: 20px;">
+                        <div style="background: #fff; width: 3px;"></div>
+                        <div
+                            style="color: #fff; font-size: 24px; line-height: 40px; align-self: end; margin-left: 30px;     margin-bottom: 20px;">
+                            <div style="font-weight: 700; font-size: 32px;">Our Service.</div>
+                            <div style="display: flex;">
+                                <li>
+                                    Production Package
+                                </li>
+                                <li style="margin-left: 100px;">
+                                    Packshot
+                                </li>
+                            </div>
+                            <div style="display: flex;">
+                                <li>
+                                    Creative Content
+                                </li>
+                                <li style="margin-left: 133px;">
+                                    Studio
+                                </li>
+                            </div>
+                            <div style="display: flex;">
+                                <li>
+                                    Graphic Design
+                                </li>
+                                <li style="margin-left: 154px;">
+                                    Media Buyer
+                                </li>
+                            </div>
+
+                            <div style="display: flex;">
+                                <li>
+                                    Motion Graphic
+                                </li>
+                                <li style="margin-left: 153px;">
+                                    KOLs Marketing
+                                </li>
+                            </div>
+
+                            <li>Strategic & Media Communication</li>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    </section>
+
+</body>
+
+</html>
